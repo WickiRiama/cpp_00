@@ -6,7 +6,7 @@
 #    By: mriant <mriant@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/15 10:16:47 by mriant            #+#    #+#              #
-#    Updated: 2022/08/15 10:35:10 by mriant           ###   ########.fr        #
+#    Updated: 2022/08/15 13:29:02 by mriant           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,16 +19,16 @@ IFLAGS = -MMD
 
 SRCS = srcs/megaphone.cpp
 
-OBJS = ${SRCS:srcs/%.c=build/%.o}
+OBJS = ${SRCS:srcs/%.cpp=build/%.o}
 
-DEPS = ${SRCS:srcs%.c=build/%.d}
+DEPS = ${SRCS:srcs%.cpp=build/%.d}
 
 ${NAME}: ${OBJS}
-	${CC} ${CFLAGS} -c ${OBJS} -o ${NAME}
+	${CC} ${CFLAGS} ${OBJS} -o ${NAME}
 
-build/%.o: srcs/%.c
+build/%.o: srcs/%.cpp
 	mkdir -p build
-	${CC} ${CFLAGS} -c ${OBJS} -o ${NAME} ${IFLAGS}
+	${CC} ${CFLAGS} -c $^ -o $@ ${IFLAGS}
 
 .PHONY: all
 all: ${NAME}
