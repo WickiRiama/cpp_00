@@ -6,7 +6,7 @@
 /*   By: mriant <mriant@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 16:26:21 by mriant            #+#    #+#             */
-/*   Updated: 2022/09/05 12:02:04 by mriant           ###   ########.fr       */
+/*   Updated: 2022/09/05 14:17:40 by mriant           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,23 @@ void	print_short(std::string str)
 int	main(void)
 {
 	PhoneBook	pb1;
+	std::string	str;
 
-	pb1.add();
-	pb1.add();
-	pb1.search();
+	while (1)
+	{
+		std::cout << "Please enter an instruction :";
+		std::getline(std::cin, str);
+		if (std::cin.eof() == true)
+			continue ;
+		if (str == "ADD")
+			pb1.add();
+		else if (str == "SEARCH")
+			pb1.search();
+		else if (str == "EXIT")
+			break ;
+		else
+			std::cout << "Possible instructions are ADD, SEARCH and EXIT"
+				<< std::endl;
+	}
 	return 0;
 }
