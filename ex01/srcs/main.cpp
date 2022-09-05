@@ -6,7 +6,7 @@
 /*   By: mriant <mriant@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 16:26:21 by mriant            #+#    #+#             */
-/*   Updated: 2022/08/29 17:25:12 by mriant           ###   ########.fr       */
+/*   Updated: 2022/09/05 10:37:48 by mriant           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(void)
 {
 	PhoneBook	pb1;
 
-	// pb1.add();
+	pb1.add();
 	// pb1.add();
 	pb1.search();
 	return 0;
