@@ -6,7 +6,7 @@
 /*   By: mriant <mriant@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 16:12:22 by mriant            #+#    #+#             */
-/*   Updated: 2022/09/05 11:00:26 by mriant           ###   ########.fr       */
+/*   Updated: 2022/09/05 11:22:27 by mriant           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "Contact.hpp"
 
 Contact::Contact(void) :first_name(""), last_name(""), nickname(""),
-		darkest_secret(""), phone_number("")
+		phone_number(""), darkest_secret("")
 {
 	std::cout << "Contact default contructor" << std::endl;
 	return ;

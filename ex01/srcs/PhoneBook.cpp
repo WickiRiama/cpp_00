@@ -6,14 +6,13 @@
 /*   By: mriant <mriant@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 16:53:37 by mriant            #+#    #+#             */
-/*   Updated: 2022/08/29 17:27:14 by mriant           ###   ########.fr       */
+/*   Updated: 2022/09/05 12:00:25 by mriant           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <iomanip>
 #include <string>
-#include <cstdlib>
 
 #include "phonebook.h"
 
@@ -35,41 +34,26 @@ void	PhoneBook::add()
 	std::string	first_name("");
 	std::string	last_name("");
 	std::string	nickname("");
+	std::string	phone_number("");
+	std::string	darkest_secret("");
 
-	while (first_name.size() == 0)
-	{
-		std::cout << "Contact first name : ";
-		std::getline(std::cin, first_name);
-	}
-	while (last_name.size() == 0)
-	{
-		std::cout << "Contact last name : ";
-		std::getline(std::cin, last_name);
-	}
-	while (nickname.size() == 0)
-	{
-		std::cout << "Contact  nickname : ";
-		std::getline(std::cin, nickname);
-	}
-	Contact	new_contact(this->nb_contacts, first_name, last_name, nickname);
+	ask_info("Contact first name: ", &first_name);
+	ask_info("Contact last name: ", &last_name);
+	ask_info("Contact nickname: ", &nickname);
+	ask_info("Contact phone_number: ", &phone_number);
+	ask_info("Contact darkest secret: ", &darkest_secret);
+	Contact	new_contact(first_name, last_name, nickname, phone_number,
+		darkest_secret);
 	this->contact_tab[this->nb_contacts % 8] = new_contact;
 	this->nb_contacts++;
 	return ;
 }
 
-void	PhoneBook::search()
+int	PhoneBook::print_all_contacts(void)
 {
-	std::string	short_str;
-	std::string	index_str = "";
-	int			index;
-	int			i;
+	int	i;
 
 	i = 0;
-	if (this->nb_contacts == 0)
-	{
-		std::cout << "There is no registered contact" << std::endl;
-		return ;
-	}
 	while (i < 8 && this->contact_tab[i].first_name != "")
 	{
 		std::cout << std::setw(10) << i;
@@ -82,15 +66,37 @@ void	PhoneBook::search()
 		std::cout << std::endl;
 		i++;
 	}
-	while (index_str.size() == 0 || index > i - 1 || index < 0)
+	return (i);
+}
+
+void	PhoneBook::print_one_contact(int index)
+{
+	std::cout << "First name: " << this->contact_tab[index].first_name
+		<< std::endl;
+	std::cout << "Last name: " << this->contact_tab[index].last_name
+		<< std::endl;
+	std::cout << "Nickname: " << this->contact_tab[index].nickname << std::endl;
+	std::cout << "Phone number: " << this->contact_tab[index].phone_number
+		<< std::endl;
+	std::cout << "Darkest Secret: " << this->contact_tab[index].darkest_secret
+		<< std::endl;
+}
+
+void	PhoneBook::search()
+{
+	std::string	short_str;
+	int			index;
+	int			contact_size;
+
+	if (this->nb_contacts == 0)
 	{
-		std::cout << "Index of the contact to display: ";
-		std::getline(std::cin, index_str);
-		index = atoi(index_str.c_str());
-		if (index > i - 1 || index < 0)
-			std::cout << "Thhis index does not exist" << std::endl;
+		std::cout << "There is no registered contact" << std::endl;
+		return ;
 	}
-	return ;
+	contact_size = print_all_contacts();
+	index = ask_index(contact_size);
+	print_one_contact(index);
+return ;
 }
 
 void	PhoneBook::exit()
