@@ -6,7 +6,7 @@
 #    By: mriant <mriant@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/15 10:16:47 by mriant            #+#    #+#              #
-#    Updated: 2022/08/29 16:35:13 by mriant           ###   ########.fr        #
+#    Updated: 2022/09/21 11:48:29 by mriant           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ IFLAGS = -MMD -Iincludes
 SRCS = ${addprefix srcs/, \
 	Contact.cpp \
 	PhoneBook.cpp \
-	main.cpp}
+	main.cpp \
+	utils.cpp}
 
 OBJS = ${SRCS:srcs/%.cpp=build/%.o}
 

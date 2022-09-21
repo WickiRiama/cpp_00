@@ -6,7 +6,7 @@
 /*   By: mriant <mriant@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 15:56:21 by mriant            #+#    #+#             */
-/*   Updated: 2022/09/21 11:42:00 by mriant           ###   ########.fr       */
+/*   Updated: 2022/09/21 13:48:02 by mriant           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ public:
 	PhoneBook(void);
 	~PhoneBook(void);
 
-	void	add(void);
-	void	search(void);
+	int	add(void);
+	int	search(void);
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mriant <mriant@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 16:53:37 by mriant            #+#    #+#             */
-/*   Updated: 2022/09/21 11:44:32 by mriant           ###   ########.fr       */
+/*   Updated: 2022/09/21 13:54:28 by mriant           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ PhoneBook::~PhoneBook(void)
 	return ;
 }
 
-void	PhoneBook::add()
+int	PhoneBook::add()
 {
 	std::string	first_name("");
 	std::string	last_name("");
@@ -34,16 +34,17 @@ void	PhoneBook::add()
 	std::string	phone_number("");
 	std::string	darkest_secret("");
 
-	ask_info("Contact first name: ", &first_name);
-	ask_info("Contact last name: ", &last_name);
-	ask_info("Contact nickname: ", &nickname);
-	ask_info("Contact phone_number: ", &phone_number);
-	ask_info("Contact darkest secret: ", &darkest_secret);
+	if (ask_info("Contact first name: ", &first_name)
+		|| ask_info("Contact last name: ", &last_name)
+		|| ask_info("Contact nickname: ", &nickname)
+		|| ask_info("Contact phone_number: ", &phone_number)
+		|| ask_info("Contact darkest secret: ", &darkest_secret))
+			return (1);
 	Contact	new_contact(first_name, last_name, nickname, phone_number,
 		darkest_secret);
 	this->contact_tab[this->nb_contacts % 8] = new_contact;
 	this->nb_contacts++;
-	return ;
+	return (0);
 }
 
 int	PhoneBook::print_all_contacts(void)
@@ -79,7 +80,7 @@ void	PhoneBook::print_one_contact(int index)
 		<< std::endl;
 }
 
-void	PhoneBook::search()
+int	PhoneBook::search()
 {
 	std::string	short_str;
 	int			index;
@@ -88,10 +89,12 @@ void	PhoneBook::search()
 	if (this->nb_contacts == 0)
 	{
 		std::cout << "There is no registered contact" << std::endl;
-		return ;
+		return (0);
 	}
 	contact_size = print_all_contacts();
 	index = ask_index(contact_size);
+	if (index == -1)
+		return (1);
 	print_one_contact(index);
-return ;
+	return (0);
 }
