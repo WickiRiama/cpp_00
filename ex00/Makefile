@@ -6,7 +6,7 @@
 #    By: mriant <mriant@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/15 10:16:47 by mriant            #+#    #+#              #
-#    Updated: 2022/08/15 13:29:02 by mriant           ###   ########.fr        #
+#    Updated: 2022/09/21 15:09:01 by mriant           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,3 +44,5 @@ fclean: clean
 .PHONY: re
 re: fclean
 	make -C .
+
+-include ${DEPS}
