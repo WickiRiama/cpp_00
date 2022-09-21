@@ -6,7 +6,7 @@
 /*   By: mriant <mriant@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 16:12:22 by mriant            #+#    #+#             */
-/*   Updated: 2022/09/05 11:22:27 by mriant           ###   ########.fr       */
+/*   Updated: 2022/09/21 11:43:54 by mriant           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 Contact::Contact(void) :first_name(""), last_name(""), nickname(""),
 		phone_number(""), darkest_secret("")
 {
-	std::cout << "Contact default contructor" << std::endl;
 	return ;
 }
 
@@ -27,10 +26,10 @@ Contact::Contact(std::string first_name, std::string last_name,
 		last_name(last_name), nickname(nickname), phone_number(phone_number),
 		darkest_secret(darkest_secret)
 {
-	std::cout << "Contact constructor called" << std::endl;
+	return ;
 }
 
 Contact::~Contact(void)
 {
-	std::cout << "Contact destroyed" << std::endl;
+	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: mriant <mriant@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 16:53:37 by mriant            #+#    #+#             */
-/*   Updated: 2022/09/05 12:00:25 by mriant           ###   ########.fr       */
+/*   Updated: 2022/09/21 11:44:32 by mriant           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,11 @@
 
 PhoneBook::PhoneBook(void)
 {
-	std::cout << "PhoneBook created" << std::endl;
 	this->nb_contacts = 0;
-	std::cout << "nb_contacts: " << this->nb_contacts << std::endl;
 }
 
 PhoneBook::~PhoneBook(void)
 {
-	std::cout << "PhoneBook destroyed" << std::endl;
 	return ;
 }
 
@@ -97,9 +94,4 @@ void	PhoneBook::search()
 	index = ask_index(contact_size);
 	print_one_contact(index);
 return ;
-}
-
-void	PhoneBook::exit()
-{
-	return ;
 }
