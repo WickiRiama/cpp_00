@@ -6,7 +6,7 @@
 /*   By: mriant <mriant@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:05:40 by mriant            #+#    #+#             */
-/*   Updated: 2022/09/21 17:34:36 by mriant           ###   ########.fr       */
+/*   Updated: 2022/09/22 12:13:01 by mriant           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,23 +99,28 @@ bool	Account::makeWithdrawal( int withdrawal )
 {
 	std::cout << "[TimeStamp] index:" << this->_accountIndex;
 	std::cout << ";p_amount:" << this->_amount;
-	if (this->_amount - withdrawal < 0)
+	this->_amount -= withdrawal;
+	if (checkAmount() == 0)
 	{
 		std::cout << ";withdrawal refused" << std::endl;
+		this->_amount += withdrawal;
 		return (false);
 	}
 	std::cout << ";withdrawal:" << withdrawal;
-	this->_amount += withdrawal;
 	std::cout << ";amount:" << this->_amount;
 	this->_nbWithdrawals++;
 	std::cout << ";nb_withdrawals:" << this->_nbWithdrawals;
 	std::cout << std::endl;
+	Account::_totalAmount -= withdrawal;
+	Account::_totalNbWithdrawals++;
 	return (true);
 }
 
 int	Account::checkAmount( void ) const
 {
-	return (0);
+	if (this->_amount < 0)
+		return (0);
+	return (1);
 }
 
 // ************************************************************************** //
@@ -124,11 +129,21 @@ int	Account::checkAmount( void ) const
 
 void	Account::displayAccountsInfos( void )
 {
+	std::cout << "[TimeStamp] acounts:" << getNbAccounts();
+	std::cout << ";total:" << getTotalAmount();
+	std::cout << ";deposits:" << getNbDeposits();
+	std::cout << ";withdrawals:" << getNbDeposits();
+	std::cout << std::endl;
 	return ;
 }
 
 void	Account::displayStatus( void ) const
 {
+	std::cout << "[TimeStamp] index:" << this->_accountIndex;
+	std::cout << ";amount:" << this->_amount;
+	std::cout << ";deposits:" << this->_nbDeposits;
+	std::cout << ";withdrawals:" << this->_nbWithdrawals;
+	std::cout << std::endl;
 	return ;
 }
 
