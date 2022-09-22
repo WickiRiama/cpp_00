@@ -6,7 +6,7 @@
 /*   By: mriant <mriant@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:05:40 by mriant            #+#    #+#             */
-/*   Updated: 2022/09/22 13:54:11 by mriant           ###   ########.fr       */
+/*   Updated: 2022/09/22 17:33:38 by mriant           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ bool	Account::makeWithdrawal( int withdrawal )
 	this->_amount -= withdrawal;
 	if (checkAmount() == 0)
 	{
-		std::cout << ";withdrawal refused" << std::endl;
+		std::cout << ";withdrawal:refused" << std::endl;
 		this->_amount += withdrawal;
 		return (false);
 	}
@@ -136,10 +136,10 @@ int	Account::checkAmount( void ) const
 void	Account::displayAccountsInfos( void )
 {
 	_displayTimestamp();
-	std::cout << " acounts:" << getNbAccounts();
+	std::cout << " accounts:" << getNbAccounts();
 	std::cout << ";total:" << getTotalAmount();
 	std::cout << ";deposits:" << getNbDeposits();
-	std::cout << ";withdrawals:" << getNbDeposits();
+	std::cout << ";withdrawals:" << getNbWithdrawals();
 	std::cout << std::endl;
 	return ;
 }
