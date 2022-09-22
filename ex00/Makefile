@@ -6,7 +6,7 @@
 #    By: mriant <mriant@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/15 10:16:47 by mriant            #+#    #+#              #
-#    Updated: 2022/09/21 15:09:01 by mriant           ###   ########.fr        #
+#    Updated: 2022/09/21 16:38:12 by mriant           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ ${NAME}: ${OBJS}
 
 build/%.o: srcs/%.cpp
 	mkdir -p build
-	${CC} ${CFLAGS} -c $^ -o $@ ${IFLAGS}
+	${CC} ${CFLAGS} -c $< -o $@ ${IFLAGS}
 
 .PHONY: all
 all: ${NAME}
