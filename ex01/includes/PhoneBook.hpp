@@ -6,7 +6,7 @@
 /*   By: mriant <mriant@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 15:56:21 by mriant            #+#    #+#             */
-/*   Updated: 2022/09/21 13:48:02 by mriant           ###   ########.fr       */
+/*   Updated: 2022/09/23 11:33:49 by mriant           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ private:
 
 	int	nb_contacts;
 
-	int		print_all_contacts(void);
-	void	print_one_contact(int index);
+	int	print_all_contacts(void);
 
 public:
 
@@ -33,6 +32,7 @@ public:
 
 	int	add(void);
 	int	search(void);
+	int	start_phonebook(void);
 };
 
 #endif

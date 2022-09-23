@@ -6,7 +6,7 @@
 /*   By: mriant <mriant@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 16:53:37 by mriant            #+#    #+#             */
-/*   Updated: 2022/09/21 13:54:28 by mriant           ###   ########.fr       */
+/*   Updated: 2022/09/23 11:24:58 by mriant           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,32 +52,19 @@ int	PhoneBook::print_all_contacts(void)
 	int	i;
 
 	i = 0;
-	while (i < 8 && this->contact_tab[i].first_name != "")
+	while (i < 8 && this->contact_tab[i].get_first_name() != "")
 	{
 		std::cout << std::setw(10) << i;
 		std::cout << '|';
-		print_short(this->contact_tab[i].first_name);
+		print_short(this->contact_tab[i].get_first_name());
 		std::cout << '|';
-		print_short(this->contact_tab[i].last_name);
+		print_short(this->contact_tab[i].get_last_name());
 		std::cout << '|';
-		print_short(this->contact_tab[i].nickname);
+		print_short(this->contact_tab[i].get_nickname());
 		std::cout << std::endl;
 		i++;
 	}
 	return (i);
-}
-
-void	PhoneBook::print_one_contact(int index)
-{
-	std::cout << "First name: " << this->contact_tab[index].first_name
-		<< std::endl;
-	std::cout << "Last name: " << this->contact_tab[index].last_name
-		<< std::endl;
-	std::cout << "Nickname: " << this->contact_tab[index].nickname << std::endl;
-	std::cout << "Phone number: " << this->contact_tab[index].phone_number
-		<< std::endl;
-	std::cout << "Darkest Secret: " << this->contact_tab[index].darkest_secret
-		<< std::endl;
 }
 
 int	PhoneBook::search()
@@ -95,6 +82,34 @@ int	PhoneBook::search()
 	index = ask_index(contact_size);
 	if (index == -1)
 		return (1);
-	print_one_contact(index);
+	contact_tab[index].print_contact_infos();
+	return (0);
+}
+
+int	PhoneBook::start_phonebook()
+{
+	int	ret = 0;
+	std::string	str;
+	
+	while (1)
+	{
+		std::cout << "Please enter an instruction: ";
+		std::getline(std::cin, str);
+		if (std::cin.eof())
+			return (1);
+		if (std::cin.eof() == true)
+			return (1);
+		if (str == "ADD")
+			ret = this->add();
+		else if (str == "SEARCH")
+			ret = this->search();
+		else if (str == "EXIT")
+			break ;
+		else
+			std::cout << "Possible instructions are ADD, SEARCH and EXIT"
+				<< std::endl;
+		if (ret == 1)
+			return (1);
+	}
 	return (0);
 }
